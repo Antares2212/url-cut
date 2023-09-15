@@ -1,22 +1,20 @@
-import { Document, Schema, model } from 'mongoose';
+import { Document } from 'mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose'
 
-export interface UrlDocument extends Document {
-  originalUrl: string;
-  shortUrl: string;
+export type UrlDocument = Url & Document 
+
+@Schema()
+export class Url {
+  @Prop({
+    required: true
+  })
+  originalUrl: string
+
+  @Prop({
+    required: true,
+    unique: true
+  })
+  shortUrl: string 
 }
 
-const urlSchema = new Schema<UrlDocument>({
-  originalUrl: {
-    type: String,
-    required: true,
-  },
-  shortUrl: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-});
-
-const UrlModel = model<UrlDocument>('Url', urlSchema);
-
-export default UrlModel;
+export const UrlSchema = SchemaFactory.createForClass(Url)
