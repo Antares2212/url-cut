@@ -36,24 +36,5 @@ export class UrlService {
     const newUrl = new this.UrlModule({originalUrl: urlDto.originalUrl, shortUrl: shortUrlBuffer})
     return newUrl.save()
   }
-
-
-  // async createUrl(originalUrl: string, shortUrl: string): Promise<UrlDocument> {
-  //   try {
-  //     const url: Url = await Url.create({ originalUrl, shortUrl });
-  //     return url;
-  //   } catch (error) {
-  //     throw new Error('Не удалось создать URL-адрес');
-  //   }
-  // }
-  
-  // async getUrlByShortUrl(shortUrl: string): Promise<UrlDocument | null> {
-  //   try {
-  //     const url: Url | null = await Url.findOne({ shortUrl });
-  //     return url;
-  //   } catch (error) {
-  //     throw new Error('Ошибка при поиске URL-адреса');
-  //   }
-  // }
 }
 
