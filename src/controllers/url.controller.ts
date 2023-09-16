@@ -15,7 +15,7 @@ export class UrlController {
 
   @Get(':shortUrl')
   getOne(@Param('shortUrl') shortUrl: string): Promise<Url> {
-    return this.urlService.getOriginalUrl(shortUrl)
+    return this.urlService.getOne(shortUrl)
   }
 
   @Post('create')
